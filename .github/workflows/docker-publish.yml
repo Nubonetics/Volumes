@@ -1,0 +1,31 @@
+name: Docker
+
+on:
+  push:
+    # Publish all branches.
+    branches:
+      - '*'
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+jobs:
+
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+  build-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Log into Docker Hub registry
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u nuboneticsadmin --password-stdin
+
+      - name: Build and push image to Docker Hub registry
+        run: |
+          make build push
