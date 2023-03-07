@@ -1,4 +1,4 @@
-FROM scratch
+FROM ubuntu:20.04
 
 ADD .assets/LinuxBlocks1.8.1/LinuxNoEditor /opt/airsim/blocks
 
