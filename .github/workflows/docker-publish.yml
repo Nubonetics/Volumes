@@ -28,4 +28,4 @@ jobs:
 
       - name: Build and push image to Docker Hub registry
         run: |
-          make build push
+          make download build push

@@ -1,6 +1,5 @@
-ARG VERSION
-FROM nvidia/cudagl:$VERSION
+FROM scratch
 
-VOLUME /usr/local/nvidia
+ADD .assets/LinuxBlocks1.8.1/LinuxNoEditor /opt/airsim/blocks
 
-CMD ["/bin/sh", "-c", "trap 'exit 147' TERM; tail -f /dev/null & wait ${!}"]
+VOLUME /opt/airsim/blocks
